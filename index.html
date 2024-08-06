@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำนวณภาษีรายปี</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        label, input {
+            display: block;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>คำนวณภาษีรายปี</h1>
+    <form id="taxForm">
+        <label for="monthlyIncome">รายได้รายเดือน (บาท):</label>
+        <input type="number" id="monthlyIncome" required>
+        <button type="submit">คำนวณภาษี</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        document.getElementById('taxForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const monthlyIncome = parseFloat(document.getElementById('monthlyIncome').value);
+            const yearlyIncome = monthlyIncome * 12;
+            let tax = 0;
+
+            // คำนวณภาษีตามอัตราภาษีไทย (ณ ปี 2023)
+            if (yearlyIncome <= 150000) {
+                tax = 0;
+            } else if (yearlyIncome <= 300000) {
+                tax = (yearlyIncome - 150000) * 0.05;
+            } else if (yearlyIncome <= 500000) {
+                tax = (yearlyIncome - 300000) * 0.10 + 7500;
+            } else if (yearlyIncome <= 750000) {
+                tax = (yearlyIncome - 500000) * 0.15 + 27500;
+            } else if (yearlyIncome <= 1000000) {
+                tax = (yearlyIncome - 750000) * 0.20 + 65000;
+            } else if (yearlyIncome <= 2000000) {
+                tax = (yearlyIncome - 1000000) * 0.25 + 115000;
+            } else if (yearlyIncome <= 5000000) {
+                tax = (yearlyIncome - 2000000) * 0.30 + 365000;
+            } else {
+                tax = (yearlyIncome - 5000000) * 0.35 + 1265000;
+            }
+
+            document.getElementById('result').textContent = `ภาษีที่ต้องจ่ายรายปี: ${tax.toFixed(2)} บาท`;
+        });
+    </script>
+</body>
+</html>
