@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image / PNG" href="https://shorturl.asia/3EXgB">
     <style>
-        * {
+       * {
             box-sizing: border-box;
             font-family: 'Kanit', sans-serif;
             margin: 0;
@@ -16,18 +16,19 @@
         }
 
         body {
-
             background-color: #ffffff;
-            /* พื้นหลังสีเทาอ่อนสว่างแบบมินิมอล */
             color: #babc2d;
             padding: 40px 20px;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-image: -webkit-image-set("https://shorturl.asia/irJaI");
+            /* แก้ไขตรงนี้: ปรับพื้นหลังไม่ให้หลุดและทะลุ */
+            background-image: url("https://shorturl.asia/irJaI");
             background-repeat: no-repeat;
-            background-size: 100%;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
         .container {
@@ -36,8 +37,9 @@
             background: #7a7f7d;
             padding: 40px;
             border-radius: 24px;
-            /* ขอบมนโค้งมนสวยงามตามภาพ */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04), 0 1px 8px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 1px 8px rgba(0, 0, 0, 0.05);
+            /* ป้องกันเนื้อหาภายในทะลุขอบมน */
+            overflow: hidden; 
         }
 
         h1 {
@@ -68,7 +70,6 @@
             color: #000000;
         }
 
-        /* ปรับแต่งช่องกรอกให้เหมือนในรูปภาพ */
         select,
         input[type="number"] {
             width: 100%;
@@ -83,14 +84,12 @@
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
-            /* เพิ่มลูกศรด้านขวา */
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 16px center;
             background-size: 16px;
         }
 
-        /* ปรับแต่ง input number เฉพาะส่วนที่ไม่มีลูกศร select */
         input[type="number"] {
             background-image: none;
         }
@@ -101,7 +100,6 @@
             background-color: #c9c869;
         }
 
-        /* ปุ่มสีส้มอิฐตรงตามรูปภาพ */
         button {
             width: 100%;
             background-color: #ebe52e;
@@ -122,9 +120,9 @@
 
         button:hover {
             background-color: #c84413;
+            color: #ffffff;
         }
 
-        /* ส่วนผลลัพธ์ */
         .result-section {
             margin-top: 35px;
             border-top: 1px solid #f3f4f6;
@@ -138,14 +136,12 @@
             margin-bottom: 15px;
         }
 
-        /* จัดเรียงการ์ดแบบ Grid แนวนอนตามภาพตัวอย่าง */
         .shoe-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
             gap: 16px;
         }
 
-        /* สไตล์การ์ดรองเท้าด้านล่างแอป */
         .shoe-card {
             background: #ffffff;
             border: 1px solid #ebddad;
@@ -156,6 +152,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: space-between;
+            max-width: 100%; /* ป้องกันการ์ดขยายล้นกล่อง */
         }
 
         .shoe-img {
@@ -191,10 +189,8 @@
         .buy-btn {
             display: inline-block;
             background-color: #ff5722;
-            /* สีส้มสดใสแนวแอปช้อปปิ้ง หรือเปลี่ยนตามธีมเว็บคุณได้เลย */
             color: white;
             text-decoration: none;
-            /* เอาเส้นใต้ลิงก์ออก */
             padding: 8px 16px;
             border-radius: 20px;
             font-size: 14px;
@@ -202,11 +198,11 @@
             margin-top: 10px;
             transition: background 0.3s ease;
             text-align: center;
+            width: 100%;
         }
 
         .buy-btn:hover {
             background-color: #e64a19;
-            /* สีจะเข้มขึ้นเวลคุมเมาส์ (Hover) */
             color: white;
         }
 
@@ -219,12 +215,10 @@
 
         .shoe-rating .stars {
             color: #ffca28;
-            /* สีเหลืองทองของดาว */
         }
 
         .shoe-rating .rating-text {
             color: #666;
-            /* สีเทาสำหรับตัวเลขคะแนน */
             font-weight: bold;
             margin-left: 4px;
         }
